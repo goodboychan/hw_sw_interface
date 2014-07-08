@@ -140,7 +140,7 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int thirdBits(void) {
-  return 2;
+  return (9 << 27) + (73 << 18) +(73 << 9) + 73;
 }
 // Rating: 2
 /* 
@@ -153,7 +153,7 @@ int thirdBits(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+	return !(1 >> n);
 }
 /* 
  * sign - return 1 if positive, 0 if zero, and -1 if negative
