@@ -153,7 +153,7 @@ int thirdBits(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-	return !(1 >> n);
+	return !(((~x & (x >> 31)) + (x & ~(x >> 31))) >> (n + ~0));
 }
 /* 
  * sign - return 1 if positive, 0 if zero, and -1 if negative
@@ -164,7 +164,7 @@ int fitsBits(int x, int n) {
  *  Rating: 2
  */
 int sign(int x) {
-  return 2;
+  return (x >> 31) | (((~x + 1) >> 31) & 1);
 }
 /* 
  * getByte - Extract byte n from word x
@@ -175,7 +175,7 @@ int sign(int x) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+  return (x & (0xFF << (n << 3))) >> (n << 3) & 0xFF;
 }
 // Rating: 3
 /* 
@@ -232,5 +232,5 @@ int conditional(int x, int y, int z) {
  *   Rating: 4
  */
 int isPower2(int x) {
-  return 2;
+  return (~0 ^ (~x+1));
 }
