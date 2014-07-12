@@ -81,39 +81,39 @@ INTEGER CODING RULES:
  * Return the size of an integer in bytes.
  */
 int intSize() {
-  int intArray[10];
-  int * intPtr1;
-  int * intPtr2;
-  // TODO: Write code to compute size of an integer.
+	int intArray[10];
+	int * intPtr1;
+	int * intPtr2;
+	// TODO: Write code to compute size of an integer.
 	*intPtr1 = (&intArray[0]);
 	*intPtr2 = (&intArray[1]);
-  return *intPtr2 - *intPtr1;
+	return *intPtr2 - *intPtr1;
 }
 
 /*
  * Return the size of a double in bytes.
  */
 int doubleSize() {
-  double doubArray[10];
-  double * doubPtr1 = 0;
-  double * doubPtr2 = 0;
-  // TODO: Write code to compute size of a double.
-  doubPtr1 = (double *)(&doubArray[0]);
+	double doubArray[10];
+	double * doubPtr1 = 0;
+	double * doubPtr2 = 0;
+	// TODO: Write code to compute size of a double.
+	doubPtr1 = (double *)(&doubArray[0]);
 	doubPtr2 = (double *)(&doubArray[1]);
-  return (int)(doubPtr2) - (int)(doubPtr1);
+	return (int)(doubPtr2) - (int)(doubPtr1);
 }
 
 /*
  * Return the size of a pointer in bytes.
  */
 int pointerSize() {
-  double * ptrArray[10];
-  double ** ptrPtr1;
-  double ** ptrPtr2;
-  // TODO: Write code to compute size of a pointer.
+	double * ptrArray[10];
+	double ** ptrPtr1;
+	double ** ptrPtr2;
+	// TODO: Write code to compute size of a pointer.
 	ptrPtr1 = (double **)(&(*ptrArray[0]));
 	ptrPtr2 = (double **)(&(*ptrArray[1]));
-  return (int)&ptrPtr2 - (int)&ptrPtr1;
+	return (int)&ptrPtr2 - (int)&ptrPtr1;
 }
 
 /*
@@ -121,14 +121,14 @@ int pointerSize() {
  * pointer arithmetic.
  */
 int changeValue() {
-  int intArray[10];
-  int * intPtr1 = intArray;
-  int * intPtr2;
-  // TODO: Write code to change value of intArray[5] to 351 using only
-  //       intPtr1 and the + operator.
+	int intArray[10];
+	int * intPtr1 = intArray;
+	int * intPtr2;
+	// TODO: Write code to change value of intArray[5] to 351 using only
+	//       intPtr1 and the + operator.
 	intPtr1 = intArray + 5;
 	*intPtr1 = 351;
-  return intArray[5];
+	return intArray[5];
 }
 
 
@@ -139,7 +139,6 @@ int changeValue() {
  * Operators / and % and loops are NOT allowed.
  */
 int withinSameBlock(int * ptr1, int * ptr2) {
-  // TODO
 	int p1 = ptr1;
 	int p2 = ptr2;
 	p1 = p1 & 0xffffffc0;
@@ -152,7 +151,6 @@ int withinSameBlock(int * ptr1, int * ptr2) {
  * 0 otherwise.
  */
 int withinArray(int * intArray, int size, int * ptr) {
-  // TODO
 	int dif = ptr - intArray;
   return (dif > 0) & ((size - dif) > 0);
 }
@@ -162,9 +160,7 @@ int withinArray(int * intArray, int size, int * ptr) {
  * the indices of x to begin with the low-order bit numbered as 0.
  */
 int invert(int x, int p, int n) {
-  // TODO
 	int invert_bit = 1 << n;
 	int mask = (invert_bit - 1) << p;
-	
   return x^mask;
 }
