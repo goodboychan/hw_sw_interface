@@ -1,7 +1,7 @@
 /*
  * CSE 351 HW1 (Data Lab - Pointers)
  *
- * <Please put your name and userid here>
+ * Chanseok
  *
  * pointer.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -85,8 +85,9 @@ int intSize() {
   int * intPtr1;
   int * intPtr2;
   // TODO: Write code to compute size of an integer.
-
-  return 2;
+	*intPtr1 = (&intArray[0]);
+	*intPtr2 = (&intArray[1]);
+  return *intPtr2 - *intPtr1;
 }
 
 /*
@@ -94,11 +95,12 @@ int intSize() {
  */
 int doubleSize() {
   double doubArray[10];
-  double * doubPtr1;
-  double * doubPtr2;
+  double * doubPtr1 = 0;
+  double * doubPtr2 = 0;
   // TODO: Write code to compute size of a double.
-
-  return 2;
+  doubPtr1 = (double *)(&doubArray[0]);
+	doubPtr2 = (double *)(&doubArray[1]);
+  return (int)(doubPtr2) - (int)(doubPtr1);
 }
 
 /*
@@ -109,8 +111,9 @@ int pointerSize() {
   double ** ptrPtr1;
   double ** ptrPtr2;
   // TODO: Write code to compute size of a pointer.
-
-  return 2;
+	ptrPtr1 = (double **)(&(*ptrArray[0]));
+	ptrPtr2 = (double **)(&(*ptrArray[1]));
+  return (int)&ptrPtr2 - (int)&ptrPtr1;
 }
 
 /*
@@ -123,7 +126,8 @@ int changeValue() {
   int * intPtr2;
   // TODO: Write code to change value of intArray[5] to 351 using only
   //       intPtr1 and the + operator.
-
+	intPtr1 = intArray + 5;
+	*intPtr1 = 351;
   return intArray[5];
 }
 
@@ -136,7 +140,11 @@ int changeValue() {
  */
 int withinSameBlock(int * ptr1, int * ptr2) {
   // TODO
-  return 2;
+	int p1 = ptr1;
+	int p2 = ptr2;
+	p1 = p1 & 0xffffffc0;
+	p2 = p2 & 0xffffffc0;
+  return p1 == p2;
 }
 
 /*
@@ -145,7 +153,8 @@ int withinSameBlock(int * ptr1, int * ptr2) {
  */
 int withinArray(int * intArray, int size, int * ptr) {
   // TODO
-  return 2;
+	int dif = ptr - intArray;
+  return (dif > 0) & ((size - dif) > 0);
 }
 /*
  * Return x with the n bits that begin at position p inverted (i.e.,
@@ -154,5 +163,8 @@ int withinArray(int * intArray, int size, int * ptr) {
  */
 int invert(int x, int p, int n) {
   // TODO
-  return 2;
+	int invert_bit = 1 << n;
+	int mask = (invert_bit - 1) << p;
+	
+  return x^mask;
 }
